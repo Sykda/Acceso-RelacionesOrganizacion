@@ -1,8 +1,11 @@
 package organizacion;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -12,18 +15,26 @@ public class empleado {
 	private String dni;
 	private String nom_emp;
 	private int id_depto;
+	private empleado_datos_prof datosEmpleado;
 
-	public empleado(String dni, String nom_emp, int id_depto) {
+	
+
+	public empleado() {
 		super();
-		this.dni = dni;
-		this.nom_emp = nom_emp;
-		this.id_depto = id_depto;
 	}
 
-	@Id
-	@OneToOne
+	@Id	
 	public String getDni() {
 		return dni;
+	}
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	public empleado_datos_prof getDatosEmpleado() {
+		return datosEmpleado;
+	}
+
+	public void setDatosEmpleado(empleado_datos_prof datosEmpleado) {
+		this.datosEmpleado = datosEmpleado;
 	}
 
 	public void setDni(String dni) {

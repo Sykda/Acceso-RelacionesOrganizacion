@@ -1,6 +1,7 @@
 package organizacion;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
@@ -24,8 +25,28 @@ public class Main {
 
 		// obtains the session
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		session.beginTransaction();
+		Transaction t= session.beginTransaction();
+		
+		empleado e1 = new empleado();
+		e1.setDni("02720917v");
+		e1.setNom_emp("pedro");
+		
+		
+		empleado_datos_prof d1= new empleado_datos_prof(); 
+		d1.setCategoria("Becario");
+		d1.setDni("02720917V");
+		d1.setSueldo_bruto_anual(12000);
+		
+		e1.setDatosEmpleado(d1);
+		
+		session.save(e1);
+		session.save(d1);
+				
+				
+				
+		t.commit();
 
+		
 		session.close();
 	}
 }

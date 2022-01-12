@@ -32,6 +32,7 @@ public class proyecto_sede {
 		this.id_proy = id_proy;
 	}
 
+	
 	public int getId_sede() {
 		return id_sede;
 	}
