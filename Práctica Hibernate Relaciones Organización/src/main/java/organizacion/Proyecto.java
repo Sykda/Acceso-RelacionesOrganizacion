@@ -1,31 +1,51 @@
 package organizacion;
 
 import java.util.Date;
-
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table
-public class proyecto {
+public class Proyecto {
 
 	private int id_proy;
 	private Date f_inicio;
 	private Date f_fin;
 	private String nom_proy;
+	private Set<Sede> sedes = new HashSet<Sede>();
 
-	public proyecto(int id_proy, Date f_inicio, Date f_fin, String nom_proy) {
+	public Proyecto(Date f_inicio, Date f_fin, String nom_proy) {
 		super();
-		this.id_proy = id_proy;
 		this.f_inicio = f_inicio;
 		this.f_fin = f_fin;
 		this.nom_proy = nom_proy;
 	}
 
 	@Id
+	@Column
+	@GeneratedValue
 	public int getId_proy() {
 		return id_proy;
+	}
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	public Set<Sede> getSedes() {
+		return sedes;
+	}
+
+	public void add_sede(Sede s) {
+		sedes.add(s);
+	}
+
+	public void setSedes(Set<Sede> sedes) {
+		this.sedes = sedes;
 	}
 
 	public void setId_proy(int id_proy) {

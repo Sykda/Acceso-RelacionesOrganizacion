@@ -1,5 +1,7 @@
 package organizacion;
 
+import java.util.Set;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -7,10 +9,8 @@ import org.hibernate.cfg.Configuration;
 
 /**
  *
- * This program demonstrates using JPA annotations in Hibernate in order to
- * implement a one-to-many association mapping.
  * 
- * @author www.codejava.net
+ * @author Robert M.P.
  *
  */
 public class Main {
@@ -25,28 +25,37 @@ public class Main {
 
 		// obtains the session
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		Transaction t= session.beginTransaction();
-		
-		empleado e1 = new empleado();
-		e1.setDni("02720917v");
-		e1.setNom_emp("pedro");
-		
-		
-		empleado_datos_prof d1= new empleado_datos_prof(); 
-		d1.setCategoria("Becario");
-		d1.setDni("02720917V");
-		d1.setSueldo_bruto_anual(12000);
-		
-		e1.setDatosEmpleado(d1);
-		
-		session.save(e1);
-		session.save(d1);
-				
-				
-				
-		t.commit();
+		Transaction t = session.beginTransaction();
 
+		for (int i = 1; i <= 2; i++) {
+
+			Sede sede = new Sede("Sede - " + i);
+			session.save(sede);
+
+			for (int a = 1; a <= 3; a++) {
+				Departamento departamento = new Departamento("Departamento: " + a, sede.getId_sede(), sede);
+				session.save(departamento);
+
+				for (int b = 1; b <= 4; b++) {
+					Empleado empleado = new Empleado("02720" + a + i + b + "V", "Empleado: " + b,
+							departamento.getId_depto());
+					Empleado_datos_prof edp = new Empleado_datos_prof(empleado.getDni(), "" + b, 1200 + b, empleado);
+					session.save(empleado);
+					session.save(edp);
+				}
+			}
+
+			for (int z = 1; z <= 3; z++) {
+				Proyecto proyecto = new Proyecto(null, null, "Proyecto 000" + z);
+				proyecto.add_sede(sede);
+				session.save(proyecto);
+			}
+		}
+
+		t.commit();
 		
+		
+
 		session.close();
 	}
 }

@@ -8,15 +8,23 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class empleado_datos_prof {
+public class Empleado_datos_prof {
 
 	private String dni;
 	private String categoria;
 	private double sueldo_bruto_anual;
-	empleado empleado;
+	Empleado empleado;
 
-	public empleado_datos_prof() {
+	public Empleado_datos_prof(String dni, String categoria, double sueldo_bruto_anual, Empleado empleado) {
 		super();
+		this.dni = dni;
+		this.categoria = categoria;
+		this.sueldo_bruto_anual = sueldo_bruto_anual;
+		this.empleado = empleado;
+	}
+
+	public String getCategoria() {
+		return categoria;
 	}
 
 	@Id
@@ -26,28 +34,24 @@ public class empleado_datos_prof {
 	}
 
 	@OneToOne(mappedBy = "datosEmpleado")
-	public empleado getEmpleado() {
+	public Empleado getEmpleado() {
 		return empleado;
-	}
-
-	public String getCategoria() {
-		return categoria;
 	}
 
 	public double getSueldo_bruto_anual() {
 		return sueldo_bruto_anual;
 	}
 
-	public void setEmpleado(empleado empleado) {
-		this.empleado = empleado;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
 	}
 
 	public void setSueldo_bruto_anual(double sueldo_bruto_anual) {

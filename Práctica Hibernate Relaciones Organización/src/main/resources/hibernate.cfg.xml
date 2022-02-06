@@ -12,11 +12,10 @@
   <property name="hibernate.connection.username">root</property>
   <property name="hibernate.connection.password">root</property>
   <property name="hibernate.generate_statistics">false</property>
-  <mapping class="organizacion.empleado"/>
-  <mapping class="organizacion.empleado_datos_prof"/>
-  <mapping class="organizacion.departamento"/>
-  <mapping class="organizacion.proyecto"/>
-  <mapping class="organizacion.proyecto_sede"/>
-  <mapping class="organizacion.sede"/>
+  <mapping class="organizacion.Empleado"/>
+  <mapping class="organizacion.Empleado_datos_prof"/>
+  <mapping class="organizacion.Departamento"/>
+  <mapping class="organizacion.Proyecto"/>
+  <mapping class="organizacion.Sede"/>
  </session-factory>
 </hibernate-configuration>
