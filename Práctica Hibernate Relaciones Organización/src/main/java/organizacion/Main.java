@@ -1,7 +1,5 @@
 package organizacion;
 
-import java.util.Set;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -52,8 +50,7 @@ public class Main {
 			}
 		}
 
-		t.commit();
-		
+		t.commit();		
 		
 
 		session.close();
