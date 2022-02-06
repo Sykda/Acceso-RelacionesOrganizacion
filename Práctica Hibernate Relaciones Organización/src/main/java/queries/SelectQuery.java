@@ -63,10 +63,10 @@ public class SelectQuery {
 		// Proyectos
 		String hql4 = "from Proyecto ";
 		Query query4 = session.createQuery(hql4);
-		List<Proyecto> listCategories3 = query3.getResultList();
+		List<Proyecto> listProyecto = query4.getResultList();
 
 		System.out.println("\n Tabla Proyecto");
-		for (Proyecto i : listCategories3) {
+		for (Proyecto i : listProyecto) {
 
 			System.out.println(i.getId_proy() + " / " + i.getNom_proy());
 		}
