@@ -25,7 +25,10 @@ public class Sede {
 		super();
 		this.nom_sede = nom_sede;
 	}
-	
+
+	public Sede() {
+		super();
+	}
 
 	@Id
 	@Column

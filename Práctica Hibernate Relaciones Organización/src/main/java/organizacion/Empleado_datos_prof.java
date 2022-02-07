@@ -23,6 +23,10 @@ public class Empleado_datos_prof {
 		this.empleado = empleado;
 	}
 
+	public Empleado_datos_prof() {
+		super();
+	}
+
 	public String getCategoria() {
 		return categoria;
 	}

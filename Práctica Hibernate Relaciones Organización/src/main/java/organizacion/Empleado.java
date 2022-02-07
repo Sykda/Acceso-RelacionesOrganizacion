@@ -25,6 +25,10 @@ public class Empleado {
 		this.id_depto = id_depto;
 	}
 
+	public Empleado() {
+		super();
+	}
+
 	@OneToOne(cascade = CascadeType.ALL)
 	public Empleado_datos_prof getDatosEmpleado() {
 		return datosEmpleado;

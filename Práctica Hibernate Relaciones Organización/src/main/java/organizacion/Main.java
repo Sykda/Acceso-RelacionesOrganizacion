@@ -50,8 +50,7 @@ public class Main {
 			}
 		}
 
-		t.commit();		
-		
+		t.commit();
 
 		session.close();
 	}

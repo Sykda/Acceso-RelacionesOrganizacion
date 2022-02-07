@@ -3,6 +3,7 @@ package organizacion;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,6 +27,10 @@ public class Proyecto {
 		this.f_inicio = f_inicio;
 		this.f_fin = f_fin;
 		this.nom_proy = nom_proy;
+	}
+
+	public Proyecto() {
+		super();
 	}
 
 	@Id

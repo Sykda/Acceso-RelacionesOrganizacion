@@ -29,6 +29,10 @@ public class Departamento {
 		this.sede = sede;
 	}
 
+	public Departamento() {
+		super();
+	}
+
 	@OneToMany(mappedBy = "departamento", cascade = CascadeType.ALL)
 	public Set<Empleado> getEmpleados() {
 		return empleados;
