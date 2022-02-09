@@ -18,24 +18,19 @@ public class Departamento {
 
 	private int id_depto;
 	private String nom_dpto;
-	private int id_sede;
+
 	private Set<Empleado> empleados = new HashSet<Empleado>();
 	Sede sede;
 
-	public Departamento(String nom_dpto, int id_sede, Sede sede) {
+	public Departamento(String nom_dpto, Sede sede) {
 		super();
 		this.nom_dpto = nom_dpto;
-		this.id_sede = id_sede;
+
 		this.sede = sede;
 	}
 
 	public Departamento() {
 		super();
-	}
-
-	@OneToMany(mappedBy = "departamento", cascade = CascadeType.ALL)
-	public Set<Empleado> getEmpleados() {
-		return empleados;
 	}
 
 	@Id
@@ -45,17 +40,18 @@ public class Departamento {
 		return id_depto;
 	}
 
-	public int getId_sede() {
-		return id_sede;
-	}
-
-	public String getNom_dpto() {
-		return nom_dpto;
+	@OneToMany(mappedBy = "departamento", cascade=CascadeType.ALL)
+	public Set<Empleado> getEmpleados() {
+		return empleados;
 	}
 
 	@ManyToOne
 	public Sede getSede() {
 		return sede;
+	}
+
+	public String getNom_dpto() {
+		return nom_dpto;
 	}
 
 	public void setEmpleados(Set<Empleado> empleados) {
@@ -64,10 +60,6 @@ public class Departamento {
 
 	public void setId_depto(int id_depto) {
 		this.id_depto = id_depto;
-	}
-
-	public void setId_sede(int id_sede) {
-		this.id_sede = id_sede;
 	}
 
 	public void setNom_dpto(String nom_dpto) {

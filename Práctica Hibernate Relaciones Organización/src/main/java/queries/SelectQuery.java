@@ -72,8 +72,9 @@ public class SelectQuery {
 
 		// Número de empleados y proyectos por sede.
 		String hql5 = "Select  count(distinct empleado.dni),count(distinct proyecto.id_proy), sede.id_sede \r\n"
-				+ "from empleado \r\n" + "join departamento\r\n" + "on empleado.id_depto=departamento.id_depto\r\n"
-				+ "join sede\r\n" + "on departamento.id_sede= sede.id_sede\r\n" + "join proyecto_sede \r\n"
+				+ "from empleado \r\n" + "join departamento\r\n"
+				+ "on empleado.departamento_id_depto=departamento.id_depto\r\n" + "join sede\r\n"
+				+ "on departamento.sede_id_sede= sede.id_sede\r\n" + "join proyecto_sede \r\n"
 				+ "on sede.id_sede=proyecto_sede.sedes_id_sede\r\n" + "join proyecto\r\n"
 				+ "on proyecto_sede.proyectos_id_proy=proyecto.id_proy\r\n" + "group by sede.id_sede;";
 		Query query5 = session.createNativeQuery(hql5);

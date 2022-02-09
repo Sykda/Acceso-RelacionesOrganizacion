@@ -21,7 +21,7 @@ public class DeleteQuery {
 		// Borre un departamento.
 		String hql = "delete from organizacion.Departamento where id_depto = :id_depto";
 
-		Query query = session.createQuery(hql);
+		Query query = session.createNativeQuery(hql);
 		query.setParameter("id_depto", 11);
 
 		int rowsAffected = query.executeUpdate();

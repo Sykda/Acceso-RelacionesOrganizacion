@@ -27,10 +27,6 @@ public class Empleado_datos_prof {
 		super();
 	}
 
-	public String getCategoria() {
-		return categoria;
-	}
-
 	@Id
 	@Column
 	public String getDni() {
@@ -40,6 +36,10 @@ public class Empleado_datos_prof {
 	@OneToOne(mappedBy = "datosEmpleado")
 	public Empleado getEmpleado() {
 		return empleado;
+	}
+
+	public String getCategoria() {
+		return categoria;
 	}
 
 	public double getSueldo_bruto_anual() {

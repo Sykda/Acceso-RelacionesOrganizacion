@@ -31,12 +31,11 @@ public class Main {
 			session.save(sede);
 
 			for (int a = 1; a <= 3; a++) {
-				Departamento departamento = new Departamento("Departamento: " + a, sede.getId_sede(), sede);
+				Departamento departamento = new Departamento("Departamento: " + a, sede);
 				session.save(departamento);
 
 				for (int b = 1; b <= 4; b++) {
-					Empleado empleado = new Empleado("02720" + a + i + b + "V", "Empleado: " + b,
-							departamento);
+					Empleado empleado = new Empleado("02720" + a + i + b + "V", "Empleado: " + b, departamento);
 					Empleado_datos_prof edp = new Empleado_datos_prof(empleado.getDni(), "" + b, 1200 + b, empleado);
 					session.save(empleado);
 					session.save(edp);
