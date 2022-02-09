@@ -8,9 +8,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table
@@ -40,7 +44,8 @@ public class Departamento {
 		return id_depto;
 	}
 
-	@OneToMany(mappedBy = "departamento", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "departamento")
+	@OnDelete( action = OnDeleteAction.CASCADE )
 	public Set<Empleado> getEmpleados() {
 		return empleados;
 	}

@@ -6,6 +6,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 @Table
 public class Empleado_datos_prof {
@@ -20,11 +23,8 @@ public class Empleado_datos_prof {
 		this.dni = dni;
 		this.categoria = categoria;
 		this.sueldo_bruto_anual = sueldo_bruto_anual;
-		this.empleado = empleado;
-	}
-
-	public Empleado_datos_prof() {
-		super();
+		this.empleado=empleado;
+		
 	}
 
 	@Id
@@ -33,9 +33,14 @@ public class Empleado_datos_prof {
 		return dni;
 	}
 
-	@OneToOne(mappedBy = "datosEmpleado")
+	@OneToOne
+	@OnDelete( action = OnDeleteAction.CASCADE )
 	public Empleado getEmpleado() {
 		return empleado;
+	}
+	
+	public Empleado_datos_prof() {
+		super();
 	}
 
 	public String getCategoria() {

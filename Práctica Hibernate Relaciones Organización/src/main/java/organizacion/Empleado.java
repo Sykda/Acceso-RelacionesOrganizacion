@@ -4,9 +4,13 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table
@@ -34,7 +38,7 @@ public class Empleado {
 		return dni;
 	}
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "empleado")
 	public Empleado_datos_prof getDatosEmpleado() {
 		return datosEmpleado;
 	}
