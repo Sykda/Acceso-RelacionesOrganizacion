@@ -36,7 +36,7 @@ public class Main {
 
 				for (int b = 1; b <= 4; b++) {
 					Empleado empleado = new Empleado("02720" + a + i + b + "V", "Empleado: " + b,
-							departamento.getId_depto());
+							departamento);
 					Empleado_datos_prof edp = new Empleado_datos_prof(empleado.getDni(), "" + b, 1200 + b, empleado);
 					session.save(empleado);
 					session.save(edp);

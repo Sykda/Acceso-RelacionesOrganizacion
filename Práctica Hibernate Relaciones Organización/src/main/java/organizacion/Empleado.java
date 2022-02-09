@@ -3,6 +3,7 @@ package organizacion;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -14,15 +15,14 @@ public class Empleado {
 
 	private String dni;
 	private String nom_emp;
-	private int id_depto;
 	private Empleado_datos_prof datosEmpleado;
 	Departamento departamento;
 
-	public Empleado(String dni, String nom_emp, int id_depto) {
+	public Empleado(String dni, String nom_emp, Departamento departamento) {
 		super();
 		this.dni = dni;
 		this.nom_emp = nom_emp;
-		this.id_depto = id_depto;
+		this.departamento = departamento;
 	}
 
 	public Empleado() {
@@ -43,11 +43,7 @@ public class Empleado {
 	@Column
 	public String getDni() {
 		return dni;
-	}
-
-	public int getId_depto() {
-		return id_depto;
-	}
+	}	
 
 	public String getNom_emp() {
 		return nom_emp;
@@ -65,9 +61,7 @@ public class Empleado {
 		this.dni = dni;
 	}
 
-	public void setId_depto(int id_depto) {
-		this.id_depto = id_depto;
-	}
+
 
 	public void setNom_emp(String nom_emp) {
 		this.nom_emp = nom_emp;
